@@ -2,6 +2,7 @@
 import AboutCard from "../Components/AboutCard"
 import HomeCard from "../Components/HomeCard"
 import PortfolioCard from "../Components/PortfolioCard"
+import SkiilsSection from "../Components/SkiilsSection"
 
 const Home = () => {
     return (        
@@ -11,6 +12,7 @@ const Home = () => {
                 <PortfolioCard />
                 <HomeCard />
                 <AboutCard />
+                <SkiilsSection />
             </div>
         </>
     )
