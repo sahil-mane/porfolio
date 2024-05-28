@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*::-webkit-scrollbar{
+    display: none;
+}
+
+body
+{
+    background-image: url('./assets/bg5.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.Portfolio-Card {
+    background-color: rgba(128, 128, 128, 0.173);
+}
+
+.gradient-text {
+    background: linear-gradient(#aa93ad, #3c1b77);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
