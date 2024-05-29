@@ -27,9 +27,9 @@ const ProjectSection = () => {
     ] 
   return (
     <>
-<div>
+<div className="">
     <h1 className="text-5xl lg:text-7xl gradient-text mb-10">My Project</h1>
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-10">
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-10 mx-3 lg:mx-0">
         {/* <ProjectCard name={"portfolio"} tech="MERN STACK" description="this webaite is for starter's" />
         <ProjectCard name={"portfolio 2"} tech="MERN STACK" description="this webaite is for starter's" />
         <ProjectCard name={"portfolio 3"} tech="MERN STACK" description="this webaite is for starter's" />
