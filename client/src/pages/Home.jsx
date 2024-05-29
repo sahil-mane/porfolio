@@ -2,6 +2,7 @@
 import AboutCard from "../Components/AboutCard"
 import HomeCard from "../Components/HomeCard"
 import PortfolioCard from "../Components/PortfolioCard"
+import ProjectSection from "../Components/ProjectSection"
 import SkiilsSection from "../Components/SkiilsSection"
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
                 <HomeCard />
                 <AboutCard />
                 <SkiilsSection />
+                <ProjectSection />
             </div>
         </>
     )
