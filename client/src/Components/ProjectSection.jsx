@@ -55,7 +55,7 @@ const ProjectSection = () => {
     ]
     return (
         <>
-            <div className="mb-20 lg:mb-36">
+            <div data-aos="fade-down" className="mb-20 lg:mb-36">
                 <h1 className="text-5xl lg:text-7xl gradient-text mb-10">My Project</h1>
                 <div ref={scrollRefs} className="flex gap-5 lg:gap-20  overflow-x-auto overflow-y-hidden lg:p-4 scroll-hide ">
                     {data.map((data, index) => (

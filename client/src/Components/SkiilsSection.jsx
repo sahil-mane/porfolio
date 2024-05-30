@@ -33,7 +33,7 @@ const SkiilsSection = () => {
    console.log(data)
   return (
     <>
-      <div className="mb-20 lg:mb-36">
+      <div data-aos="fade-right" className="mb-20 lg:mb-36">
         <h1 className="text-5xl lg:text-7xl gradient-text mb-10">My Skills</h1>
         {/* <button
           onClick={toggleView}

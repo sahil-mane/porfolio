@@ -5,8 +5,8 @@ import join_hand from '../assets/join_hand.png'
 const HomeCard = () => {
     return (
         <>
-            <div className='flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between items-center mb-20 lg:mb-36'>
-                <div className='flex flex-col gap-5 lg:w-[50%]'>
+            <div  className='flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between items-center mb-20 lg:mb-36'>
+                <div  data-aos="fade-up-right" className='flex flex-col gap-5 lg:w-[50%]'>
                     <div className='flex items-center mb-10 gap-3'>
                         <h1 className='text-5xl lg:text-7xl gradient-text'>Namaste!</h1>
                         <span ><img src={join_hand} alt="join hand" className='h-10' /></span>
@@ -21,7 +21,7 @@ const HomeCard = () => {
                         Let's connect and create something amazing together!
                     </p>
                 </div>
-                <div>
+                <div data-aos="fade-up-left">
                     <img src={kamal} alt="kamal_bhaiya" className='rounded-full h-[200px] w-[200px] lg:w-[450px] lg:h-[450px] mx-auto' />
                 </div>
             </div>
