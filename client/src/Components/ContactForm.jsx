@@ -26,11 +26,18 @@ const ContactForm = () => {
       rows="3"
       />
 
+        <div className="flex justify-center gap-4">
+      <input 
+      type="reset" 
+      className=" w-1/2 relative text-white px-8 py-2 rounded-md bg-transparent hover:bg-purple-700 isolation-auto z-10 border-2 border-purple-500 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-purple-500 before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700"  />   
+        
       <button 
       type="submit" 
-      className="relative text-white px-8 py-2 rounded-md bg-transparent hover:bg-purple-700 isolation-auto z-10 border-2 border-purple-500 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-purple-500 before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700">
+      className="w-1/2 relative text-white px-8 py-2 rounded-md bg-transparent hover:bg-purple-700 isolation-auto z-10 border-2 border-purple-500 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-purple-500 before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700">
         Submit
         </button>
+
+        </div>
     </form>
     </>
     
