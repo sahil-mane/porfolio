@@ -43,3 +43,7 @@ body
     background-color: #3c1b77;
     border-radius: 20px;
 }
+
+.scroll-hide::-webkit-scrollbar{
+    display: none;
+}

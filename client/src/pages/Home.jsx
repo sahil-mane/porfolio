@@ -1,5 +1,6 @@
 // import React from 'react'
 import AboutCard from "../Components/AboutCard"
+import ContactSection from "../Components/ContactSection"
 import HomeCard from "../Components/HomeCard"
 import PortfolioCard from "../Components/PortfolioCard"
 import ProjectSection from "../Components/ProjectSection"
@@ -15,6 +16,7 @@ const Home = () => {
                 <AboutCard />
                 <SkiilsSection />
                 <ProjectSection />
+                <ContactSection />
             </div>
         </>
     )
