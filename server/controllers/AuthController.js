@@ -1,73 +1,71 @@
-const { user } = require("../models/userModal");
+const { User } = require("../models/userModal");
 const createError = require("../utils/appError");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-exports.signup = async ( req, res, next ) => {
+exports.signup = async ( req, res ) => { 
 
     const {name , email , password} = req.body;
     try{
-        const UserExist = await user.findOne({ email });
+        const UserExist = await User.findOne({ email });
 
         if(UserExist)
             {
-                return next(new createError('User already exist!',400));
+                return res.status(400).json({ msg: "User already exists" })
             }
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const newUser = await user.create({
+        const newUser = await User.create({
             name ,
             email , 
             password:hashedPassword
         });
 
-        const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
-            expiresIn: '90d',
-        });
+        await newUser.save();
 
-        res.json({
-            status: 'success',
-            message:'user registered successfully',
-            token,
-            user:{
-                _id: newUser._id,
-                name: newUser.name,
-                email: newUser.email,
-                password:newUser.password
-            }
-        });
+        // const token = jwt.sign({ _id: newUser._id }, process.env.JWT_SECRET, {
+        //     expiresIn: '90d',
+        // });
+
+        return res
+        .status(201)
+        .json({ success:true, message: "User created successfully" });
 
     } 
     catch(error)
     {
-        next(error);
+        return res.status(500).json({success: false, message: error.message});
     }
 }
 
-exports.login = async ( req,res,next ) => {
+exports.login = async ( req, res ) => {
     try{
     const {email , password} = req.body;
 
-    const user = await user.findOne({email});
+    const user = await User.findOne({email});
       
     // Checking if user exists
     if(!user)
         {
-            return next(new createError('User not found!',400));
+           return res
+           .status(404)
+           .json({ success: false, msg: "Please sign up" });
         }
 
     // checking if password matches    
-    const IsPasswordValid = await bcrypt.compare(password , user.password);
+    const comparePassword = await bcrypt.compare(password , user.password);
     
     // if password does not match
-    if(!IsPasswordValid)
+    if(!comparePassword)
         {
-            return next(new createError('Invalid Credential', 401));
+            return res
+            .status(400)
+            .json({ success: false, message : "Incorrect credentials" });
         }
 
     // creating a token    
-    const token = jwt.sign({_id:user._id},process.env.JWT_SECRET,{
+    const token = jwt.sign({ id:user._id },process.env.JWT_SECRET,{
         expiresIn:'30s'
     });
 
@@ -86,39 +84,26 @@ exports.login = async ( req,res,next ) => {
     res.cookie("token",token, {
         path:"/",
         httpOnly:true, // client side js cannot access the cookie
-        expiresIn: new Date(Date.now() + 1000* 30), // expires in 30s
+        expiresIn: new Date(Date.now() + 1000 * 30), // expires in 30s
         sameSite:"lax",        
     });
 
-    res.json({
-        status:'success',
-        message:'user logged in successfully',
-        token,
-        user:{
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            password:user.password
-        } 
-    })
+    return res.status(200).json({success : true, message: "Logged in"})
     } 
     catch (error)
     {
-        next(error);
+        return res.status(500).json({success: false, message: error.message});
     }
 
 }
 
-exports.logout = async (req , res , next) => {
+exports.logout = async (req , res ) => {
     try{
         res.clearCookie("token");
-        res.json({
-            status:'success',
-            message:'user logged out successfully'
-            });
+        res.status(200).json({ success: true, message: "Logged out successfully" });
     } catch(error)
     {
-        next(error);
+        return res.status(500).json({success: false, message: error.message});
     }
 }
 //36:21 min:sec

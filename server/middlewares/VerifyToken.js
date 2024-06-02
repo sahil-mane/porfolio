@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { user } = require("../models/userModal");
+const { User } = require("../models/userModal");
 
 exports.verifyToken = async(req , res , next) => {
     // get token from cookies
@@ -19,7 +19,7 @@ exports.verifyToken = async(req , res , next) => {
         const user =jwt.verify(token,process.env.JWT_SECRET);
 
         //adding user id to req object
-        req._id = user._id;
+        req.id = user.id;
 
         // to proceed furthur
         next();        

@@ -9,9 +9,9 @@ exports.getUser = async (req, res , next) => {
         .status(404)
         .json({ success: false, message: "User not found" });
     }
-    res.status(200).json({ success: true, user });
+    res.status(200).json({ success: true, User });
   } catch (error) {
-    next(error)
+    res.status(500).json({success : false , message : error.message });
   }
 };
 

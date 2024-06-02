@@ -23,15 +23,15 @@ app.use("/api", router);
 connectDB();
 
 // 4) Global error handling
-app.use((err, req, res,  next)=>{
-    err.statuscode = err.statuscode || 500;
-    err.status = err.status || 'error';
+// app.use((err, req, res,  next)=>{
+//     err.statuscode = err.statuscode || 500;
+//     err.status = err.status || 'error';
     
-    res.status(err.statuscode).json({
-        status:err.status,
-        message:err.message,
-    });
-});
+//     res.status(err.statuscode).json({
+//         status:err.status,
+//         message:err.message,
+//     });
+// });
 
 //5) Server
 app.listen(PORT,()=>{
