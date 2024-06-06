@@ -9,12 +9,17 @@ import SkiilsSection from "../Components/SkiilsSection"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const Home = () => {
+
+const Home = () => {   
+
     useEffect(()=>{
         AOS.init({
             duration: 1500,
         });
-    },[])
+        
+    },[]);
+   
+
     return (        
         
         <>
