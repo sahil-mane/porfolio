@@ -15,7 +15,7 @@ exports.getSkills = async (req , res) => {
     }
 };
 
-exports.addSkill = async() => {
+exports.addSkill = async (req , res) => {
     try {
         const {skill , level } = req.body;
 
