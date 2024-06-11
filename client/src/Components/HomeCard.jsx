@@ -22,7 +22,7 @@ const HomeCard = () => {
                     </p>
                 </div>
                 <div data-aos="fade-up-left">
-                    <img src={kamal} alt="kamal_bhaiya" className='rounded-full h-[200px] w-[200px] lg:w-[450px] lg:h-[450px] mx-auto' />
+                    <img src={kamal} alt="kamal_bhaiya" className='rounded-full h-[200px] w-[200px] lg:w-[450px] lg:h-[450px] mx-auto rotate-12' />
                 </div>
             </div>
         </>
