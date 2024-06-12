@@ -8,6 +8,7 @@ import ProjectSection from "../Components/ProjectSection"
 import SkiilsSection from "../Components/SkiilsSection"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import "./Admin/admin.css"
 
 
 const Home = () => {   
