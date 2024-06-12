@@ -29,7 +29,7 @@ router.get("/getProjects",getProjects);
 router.post("/addProject",addProject);
 router.delete("/removeProject/:id",removeProject);
 // router.get("/updateProject/:id",updateProject);
-router.patch("/updateProject/:id",updateProject);
+router.put("/updateProject/:id",updateProject);
 
 //1:53:47 hrs:min:sec
 module.exports = router;
