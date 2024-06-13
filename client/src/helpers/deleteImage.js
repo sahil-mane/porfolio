@@ -7,11 +7,11 @@ export const deleteImage = async (public_id, signature) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        public_id,
+        public_id: public_id,
         api_key: "638525411819457",
         api_secret: "-frjg7W1RirISADR48Of5-flGyo",
-        signature,
-        timestamp: Math.floor(new Date().getTime() + 31536000000 / 1000),
+        signature:signature,
+        timestamp: Math.floor((new Date().getTime() + 31536000000) / 1000),
       }),
     }
   );

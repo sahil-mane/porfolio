@@ -41,7 +41,7 @@ const CreateProject = () => {
         publicId: uploadedImg.publicId,
         deleteToken: uploadedImg.deleteToken,
       });
-
+      console.log(res)
       alert(res.data.message);
 
       setName("");
@@ -55,6 +55,8 @@ const CreateProject = () => {
     }
 
   }
+
+
 
   return (
     <div className="p-3 backdrop-blur-3xl rounded-md w-fit mx-auto md:mt-10">

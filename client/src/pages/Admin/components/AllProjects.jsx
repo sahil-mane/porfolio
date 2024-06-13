@@ -8,6 +8,7 @@ import { MdDelete, MdEdit } from "react-icons/md"
 import { TiTick } from "react-icons/ti"
 import { getSignature } from "../../../helpers/getSignature";
 import { deleteImage } from "../../../helpers/deleteImage";
+import { uploadImage } from "../../../helpers/uploadImage"
 
 const AllProjects = () => {
 
@@ -34,7 +35,8 @@ const AllProjects = () => {
 
     //Delete project from database
     const delProj = await axios.delete(
-      `http://localhost:9000/api/removeProject/${id}`
+      `http://localhost:9000/api/removeProject/${id}`,
+      newData
     );
 
     const data = await delProj.data;
@@ -70,17 +72,46 @@ const AllProjects = () => {
   }
 
   const updateProject = async(id , public_id) =>{
+    setEdit(false);
+    let uploadedImg;
+    if (selectedImg) {
+      uploadedImg = await uploadImage(selectedImg);
+    }
 
-  }
+    const myData = {
+      name: newName,
+      desc: newDesc,
+      id:id,
+      img: uploadedImg ? uploadedImg.secureUrl : null,
+      public_id : uploadedImg ? uploadedImg.publicId : null,
+      deleteToken: uploadedImg ? uploadedImg.deleteToken : null,
+      githubUrl: newGithubUrl,
+      hostedUrl: newHostedUrl, 
+    };   
+
+    const res = await axios.put(`http://localhost:9000/api/updateProject/${id}`,myData);
+    
+    const data = await res.data;
+    alert(data.message);
+
+    if(selectedImg){
+      const signature = await getSignature(public_id);
+
+      // Delete image from cloudinary
+      const newData = await deleteImage(public_id,signature);
+
+      console.log("allPRoject no.102====>>>",newData)
+    }
+
+    getAllProject();
+  };
 
 
   useEffect(() => {
-
-
     getAllProject();
   }, [])
 
-  console.log("projects======>>>>>", projects)
+ 
 
   return (
     <div className="flex flex-col justify-center items-center gap-5 text-white lg:h-[80vh]">
@@ -139,6 +170,8 @@ const AllProjects = () => {
         )
       })}
     </div>
+
+    //1:31:28
     // <div className="p-3 backdrop-blur-lg rounded-md lg:w-3/4 mx-auto md:mt-10 flex flex-col items-center overflow-x-auto">
     //   <h1 className="text-3xl lg:text-5xl text-white mb-5 gradient-text w-full">All Projects ({data.length})</h1>
     //   <table className="mx-auto w-1/2 lg:w-full border-spacing-4 text-center text-white border-separate ">
