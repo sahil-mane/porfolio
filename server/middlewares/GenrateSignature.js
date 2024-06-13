@@ -11,7 +11,7 @@ exports.generateSignature = async (req , res ) => {
 
     const signature = await cloudinary.v2.utils.api_sign_request({
         public_id,
-        timestamp: Math.floor(new Date().getTime() + 31536000000 /1000),
+        timestamp: Math.floor((new Date().getTime() + 31536000000) /1000),
     },
     "-frjg7W1RirISADR48Of5-flGyo"
 );

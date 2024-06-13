@@ -5,9 +5,9 @@ exports.contact = async (req, res) => {
     const { name, email, message } = req.body;
 
     const userMsg = `Name : ${name}\nEmail: ${email}\nMessage : ${message}`;
-    const sendMessage = await sendMessage(userMsg);
+    const sentMessage = await sendMessage(userMsg);
 
-    if (!sendMessage) 
+    if (!sentMessage) 
     {
       return res
         .status(400)
