@@ -3,11 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 import { toggle } from "../../../redux/slices/navSlice"
 import { setPage } from "../../../redux/slices/pageSlice";
+import { logout } from "../../../redux/slices/authSlice";
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 const AdminNavbar = () => {
     const toggleNav = useSelector((state)=> state.nav.toggleNav);
     const dispatch = useDispatch();
     console.log(toggleNav);
+
+    const logoutUser = async() => {
+        alert("Are you sure to Logout")
+        const res = await axios.get("http://localhost:9000/api/logout",{
+            withCredentials: true,
+        });
+        if(res.data.success)
+            {
+                dispatch(logout());
+            }
+    }; 
     
     return (
         <>
@@ -39,7 +53,7 @@ const AdminNavbar = () => {
                     }}
                     >All Skills</li>
                 </ul>
-                <button className="text-2xl px-2 py-1 text-center hover:bg-gradient-to-tr from-purple-800 to-indigo-800  hover:bg-opacity-60 hover:shadow-lg rounded-lg transition-all outline-none ">Logout</button>
+                <button className="text-2xl px-2 py-1 text-center hover:bg-gradient-to-tr from-purple-800 to-indigo-800  hover:bg-opacity-60 hover:shadow-lg rounded-lg transition-all outline-none " onClick={logoutUser}>Logout</button>
             </nav>
         </>
     )

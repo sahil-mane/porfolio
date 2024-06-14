@@ -1,7 +1,7 @@
 // import React from 'react'
 import { GoDownload } from "react-icons/go";
 // import kamal from '../assets/kamal_bhaiya.png'
-import resume from "../assets/resume.pdf"
+import resume from "../assets/new_sahil_it.pdf"
 
 const PortfolioCard = () => {
   return (
