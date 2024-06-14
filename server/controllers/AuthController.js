@@ -60,13 +60,13 @@ exports.login = async (req, res) => {
 
     // creating a token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "30s",
+      expiresIn: "15m",
     });
 
     // check if "token cookie exists"
 
     // sending token in cookie exists in the request
-    const existingToken = req.cookie.token;
+    const existingToken = req.cookies.token;
 
     if (existingToken) {
       //clear the existing token cookie
@@ -77,7 +77,7 @@ exports.login = async (req, res) => {
     res.cookie("token", token, {
       path: "/",
       httpOnly: true, // client side js cannot access the cookie
-      expiresIn: new Date(Date.now() + 1000 * 30), // expires in 30s
+      expiresIn: new Date(Date.now() + 15*60*1000 ), // expires in 30s
       sameSite: "lax",
     });
 
