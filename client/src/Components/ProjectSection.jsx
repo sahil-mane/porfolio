@@ -49,7 +49,7 @@ const ProjectSection = () => {
         <>
             <div data-aos="fade-down" className="mb-20 lg:mb-36">
                 <h1 className="text-5xl lg:text-7xl gradient-text mb-10">My Project</h1>
-                <div ref={scrollRefs} className="flex gap-5 lg:gap-  overflow-x-auto overflow-y-hidden lg:p-4 scroll-hide ">
+                <div ref={scrollRefs} className="flex gap-5 lg:gap-12  overflow-x-auto overflow-y-hidden lg:p-4 scroll-hide ">
                     {data.map((data, index) => (
                         <ProjectCard key={index} name={data.name} description={data.desc} image={data.img} githubUrl={data.githubUrl} hostedUrl={data.hostedUrl} />
                     ))}
