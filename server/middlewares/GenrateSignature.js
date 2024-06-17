@@ -1,9 +1,9 @@
 const cloudinary = require("cloudinary");
 
 cloudinary.v2.config({
-    cloud_name : "dchitmmmx",
-    api_key: "638525411819457",
-    api_secret:"-frjg7W1RirISADR48Of5-flGyo",
+    cloud_name : process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET,
 });
 
 exports.generateSignature = async (req , res ) => {
@@ -13,7 +13,7 @@ exports.generateSignature = async (req , res ) => {
         public_id,
         timestamp: Math.floor((new Date().getTime() + 31536000000) /1000),
     },
-    "-frjg7W1RirISADR48Of5-flGyo"
+    process.env.CLOUD_API_SECRET
 );
 
 return res.status(200).json({ signature });
