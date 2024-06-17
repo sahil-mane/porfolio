@@ -1,36 +1,37 @@
 // import React from 'react'
 
 // import { useState } from "react"
+import { useEffect, useState } from "react"
 import SkillsCard from "./SkillsCard"
+import axios from "axios";
 // import Realcard from "./Realcard";
 // import kamal from "../assets/kamal_bhaiya.png"
 
 
 const SkiilsSection = () => {
-   const data = [
-    {
-      title:"ReactJs",
-      value:75
-    },
-    {
-      title:"NextJs",
-      value:40
-    },
-    {
-      title:"MongoDB",
-      value:65
-    },
-    {
-      title:"TailwindCss",
-      value:80
-    },
-    {
-      title:"NodeJS",
-      value:70
-    },    
-   ]
 
-   console.log(data)
+  const [data, setData] = useState([]);
+
+  const getAllSkills = async () => {
+    try {
+      const res = await axios.get("http://localhost:9000/api/getSkills");
+      if (res.data.success) {
+        console.log(res.data.skills);
+        setData(res.data.skills);
+      }
+      else {
+        console.log("Failed to fetch skills");
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  useEffect(() => {
+    getAllSkills();
+  }, [])
+
+  //  console.log(data)
   return (
     <>
       <div data-aos="fade-right" className="mb-20 lg:mb-36">
@@ -59,15 +60,15 @@ const SkiilsSection = () => {
             </div>
           )}          */}
         <div className="h-[300px] overflow-y-scroll select-none scroll-bar">
-            {/* <SkillsCard title={"ReactJS"} value={75} />
+          {/* <SkillsCard title={"ReactJS"} value={75} />
             <SkillsCard title={"NextJS"} value={40} />
             <SkillsCard title={"MongoDB"} value={65} />
             <SkillsCard title={"TailwindCss"} value={80} />
             <SkillsCard title={"NodeJS"} value={70} /> */}
-            {data.map((data,index) => (
-              <SkillsCard key={index} title={data.title} value={data.value} />
+          {data.map((data,index) => (
+              <SkillsCard key={index} title={data.skill} value={data.level} />
             ))}
-            </div>
+        </div>
       </div>
     </>
   )
