@@ -15,7 +15,7 @@ app.use(cookieParser());
 
 //{ orgin: "http://localhost:5173",credential:true }
 //2)Routes
-// app.get('/',(req,res) => { res.send('welcome to website')});
+app.get('/',(req,res) => { res.send('welcome to website')});
 app.use("/api", router);
 
 
