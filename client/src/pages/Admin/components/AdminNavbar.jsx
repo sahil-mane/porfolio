@@ -4,24 +4,32 @@ import { AiOutlineClose } from "react-icons/ai";
 import { toggle } from "../../../redux/slices/navSlice"
 import { setPage } from "../../../redux/slices/pageSlice";
 import { logout } from "../../../redux/slices/authSlice";
+ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const AdminNavbar = () => {
     const toggleNav = useSelector((state)=> state.nav.toggleNav);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     console.log(toggleNav);
 
-    const logoutUser = async() => {
-        alert("Are you sure to Logout")
-        const res = await axios.get("http://localhost:9000/api/logout",{
-            withCredentials: true,
-        });
-        if(res.data.success)
-            {
-                dispatch(logout());
+    const logoutUser = async () => {
+        const confirmation = window.confirm("Are you sure you want to logout?");
+        if (confirmation) {
+            try {
+                const res = await axios.get("http://localhost:9000/api/logout", {
+                    withCredentials: true,
+                });
+                if (res.data.success) {
+                    dispatch(logout());
+                    navigate("/");
+                }
+            } catch (error) {
+                console.error("Logout failed", error);
             }
-    }; 
+        }
+    };
     
     return (
         <>

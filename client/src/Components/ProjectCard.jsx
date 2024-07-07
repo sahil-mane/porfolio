@@ -5,12 +5,12 @@ import { RiSignalTowerFill } from "react-icons/ri";
 import { MdOutlineInfo } from "react-icons/md";
 
 // Modal Component
-const Modal = ({ show, onClose, description,name }) => {
+const Modal = ({ show, onClose, description, name }) => {
     if (!show) return null;
 
     return (
-        <div className="fixed inset-0 bg-transparent backdrop-blur-xl flex justify-center items-center">
-            <div className="bg-transparent text-white p-5 rounded-lg w-1/2  border-2 border-white">
+        <div className="fixed inset-0 bg-transparent backdrop-blur-xl flex justify-center items-center z-50">
+            <div className="bg-transparent text-white p-5 rounded-lg w-1/2 border-2 border-white">
                 <h2 className="text-xl font-semibold mb-4">Project Details</h2>
                 <hr />
                 <h1 className="text-3xl text-center my-2">{name}</h1>
@@ -29,16 +29,12 @@ const ProjectCard = ({ name, description, image, githubUrl, hostedUrl }) => {
     const toggleModal = () => {
         setShowModal(!showModal);
     };
-    // height: 327px;
-    // width: 224px;
-    // https://vahan-client.vercel.app/
-    // https://porfolio-api-alpha.vercel.app/
 
     return (
         <>
             <div className="p-5 m-4">
-                <div className="border-2 border-white bg-transparent backdrop-blur-xl text-white p-3 rounded-xl w-[224px] h-[327px]">
-                    <img src={image} className="h-32 w-40 mx-auto rounded-xl" alt={name} />
+                <div className="border-2 border-white bg-transparent backdrop-blur-xl text-white p-3 rounded-xl w-[224px] h-[355px] relative z-10">
+                    <img src={image} className="h-40 w-40 mx-auto rounded-xl" alt={name} />
                     <div className="flex flex-col gap-3 my-4">
                         <button>
                             <a href={githubUrl} className="flex items-center gap-2 cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg

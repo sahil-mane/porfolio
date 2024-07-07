@@ -8,7 +8,7 @@ import { MdDelete, MdEdit } from "react-icons/md"
 import { TiTick } from "react-icons/ti"
 import { getSignature } from "../../../helpers/getSignature";
 import { deleteImage } from "../../../helpers/deleteImage";
-import { uploadImage } from "../../../helpers/uploadImage"
+import { uploadImage } from "../../../helpers/uploadImage";
 
 const AllProjects = () => {
 
@@ -114,7 +114,7 @@ const AllProjects = () => {
  
 
   return (
-    <div className="flex flex-col justify-center items-center gap-5 text-white lg:h-[80vh]">
+    <div className="grid lg:grid-cols-2 grid-cols-1 gap-y-2 text-white lg:h-[80vh] overflow-y-auto mt-3 ">
       {projects.map((project) => {
         return (
           <div key={project._id} className="flex flex-col border-2 w-[80vw] lg:w-[45vw] rounded-lg px-2 py-2 gap-3">
